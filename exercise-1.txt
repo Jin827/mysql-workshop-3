@@ -1,0 +1,56 @@
+Exercise 1
+
+[1]
+mysql> SELECT COUNT(accountID), accountId From AddressBook GROUP BY accountId DESC LIMIT 1; 
++------------------+-----------+
+| COUNT(accountID) | accountId |
++------------------+-----------+
+|               12 |       100 |
++------------------+-----------+
+1 row in set (0.01 sec)
+
+
+mysql> SELECT COUNT(addressBookId), addressBookId From Entry GROUP BY addressBookId DESC LIMIT 1;                                
++----------------------+---------------+
+| COUNT(addressBookId) | addressBookId |
++----------------------+---------------+
+|                   22 |           110 |
++----------------------+---------------+
+1 row in set (0.00 sec)
+
+
+
+
+[2]
+
+mysql> SELECT COUNT(addressBookId), addressBookId  From Entry  WHERE subtype = "phone"  AND contentLineOne LIKE '%%3';
++----------------------+---------------+
+| COUNT(addressBookId) | addressBookId |
++----------------------+---------------+
+|                   63 |            67 |
++----------------------+---------------+
+1 row in set (0.00 sec)
+
+
+
+
+mysql> SELECT COUNT(*) FROM Entry
+    -> WHERE subtype = 'phone'
+    -> AND type = 'home'
+    -> AND NOT ((LENGTH(SUBSTRING_INDEX(contentLineOne,'5', 1))) > 1);
++----------+
+| COUNT(*) |
++----------+
+|       16 |
++----------+
+1 row in set (0.00 sec)
+
+
+
+mysql> SELECT COUNT(*) From Entry WHERE type = "work"  AND contentLineOne LIKE '1-%';
++----------+
+| COUNT(*) |
++----------+
+|       60 |
++----------+
+1 row in set (0.00 sec)
