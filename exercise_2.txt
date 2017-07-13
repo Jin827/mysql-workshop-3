@@ -1,0 +1,30 @@
+
+SOURCE data/import-account.sql;
+SOURCE data/import-addressbook.sql;
+SOURCE data/import-entry.sql;
+
+//Accidentally input the data multiple times ;; 
+
+mysql> SELECT COUNT(*) FROM Account WHERE email = "Donec.vitae@Phasellusornare.org";              
++----------+                                                                                      
+| COUNT(*) |                                                                                      
++----------+                                                                                      
+|        4 |                                                                                      
++----------+                                                                                      
+1 row in set (0.00 sec)  
+
+mysql> SELECT COUNT(*) FROM AddressBook WHERE name = "Non Lobortis Quis Corp." ;                  
++----------+                                                                                      
+| COUNT(*) |                                                                                      
++----------+                                                                                      
+|        5 |                                                                                      
++----------+                                                                                      
+1 row in set (0.00 sec)    
+
+mysql> SELECT COUNT(*) FROM Entry WHERE birthday = "1946-04-18 04:20:50" ;                        
++----------+                                                                                      
+| COUNT(*) |                                                                                      
++----------+                                                                                      
+|        5 |                                                                                      
++----------+                                                                                      
+1 row in set (0.01 sec)   
