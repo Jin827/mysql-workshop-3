@@ -23,12 +23,12 @@ mysql> SELECT COUNT(addressBookId), addressBookId From Entry GROUP BY addressBoo
 
 [2]
 
-mysql> SELECT COUNT(addressBookId), addressBookId  From Entry  WHERE subtype = "phone"  AND contentLineOne LIKE '%%3';
-+----------------------+---------------+
-| COUNT(addressBookId) | addressBookId |
-+----------------------+---------------+
-|                   63 |            67 |
-+----------------------+---------------+
+mysql> SELECT COUNT(*) FROM Entry WHERE subtype = 'phone' AND contentLineOne LIKE '(3%';
++----------+
+| COUNT(*) |
++----------+
+|       39 |
++----------+
 1 row in set (0.00 sec)
 
 
@@ -37,20 +37,21 @@ mysql> SELECT COUNT(addressBookId), addressBookId  From Entry  WHERE subtype = "
 mysql> SELECT COUNT(*) FROM Entry
     -> WHERE subtype = 'phone'
     -> AND type = 'home'
-    -> AND NOT ((LENGTH(SUBSTRING_INDEX(contentLineOne,'5', 1))) > 1);
+    -> AND contentLineOne NOT LIKE '%5%';
 +----------+
 | COUNT(*) |
 +----------+
-|       16 |
+|       76 |
 +----------+
-1 row in set (0.00 sec)
+1 row in set (0.01 sec)
 
 
 
-mysql> SELECT COUNT(*) From Entry WHERE type = "work"  AND contentLineOne LIKE '1-%';
+
+mysql> SELECT COUNT(*) From Entry WHERE type = "work"  AND contentLineOne REGEXP '^1';
 +----------+
 | COUNT(*) |
 +----------+
-|       60 |
+|       92 |
 +----------+
 1 row in set (0.00 sec)
