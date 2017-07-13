@@ -1,0 +1,62 @@
+[ Exercise 3 ]
+
+SELECT LOWER(country), COUNT(country) AS occurence
+FROM Address 
+GROUP BY country
+ORDER BY COUNT(country) DESC;
+
+    
+[ Exercise 4 ] 
+
+SELECT * 
+FROM Entry
+JOIN AddressBook
+ON Entry.addressBookId = AddressBook.id
+WHERE AddressBook.name="Pharetra Ut Limited";
+
+
+
+[ Exercise 5 ]
+
+SELECT email
+FROM Account
+JOIN AddressBook
+ON Account.id = AddressBook.accountId  
+WHERE AddressBook.id = 100;
+
+
+[ Exercise 6 ]
+
+SELECT content
+FROM Phone
+JOIN Entry
+ON Phone.entryId = Entry.id
+WHERE Entry.firstName = "Charlotte" AND Entry.lastName = 'Jenkins'
+
+
+[ Exercise 7 ]
+
+SELECT SUBSTRING_INDEX ( content, '@' ,-1) 
+FROM ElectronicMail;
+
+
+[ Exercise 8 ]
+
+SELECT COUNT(*)
+FROM Phone
+JOIN Entry
+ON Phone.entryId = Entry.id
+WHERE birthday BETWEEN '1950-10-01' AND '1960-10-31'
+GROUP BY Phone.subtype;
+
+
+[ Exercise 9 ]
+
+SELECT city, country
+FROM Address 
+WHERE country IN ('Canada', 'Austria', 'Isle of Man', 'Ireland', 'Japan')
+
+
+[ Exercise 10 ]
+
+Transform all work emails into home emails and vice versa. BE CAREFUL ;)
